@@ -17,10 +17,10 @@ public class Init {
         System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, 5, 500);
-        verifyWait = new WebDriverWait(driver, 1, 500);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        wait = new WebDriverWait(driver, 10, 500);
+        verifyWait = new WebDriverWait(driver, 3, 500);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         driver.get("https://www.sberbank.ru/person");
         fw = new Framework(driver, wait, verifyWait);
     }

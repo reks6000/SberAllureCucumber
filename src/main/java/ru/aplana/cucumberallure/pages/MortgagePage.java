@@ -26,8 +26,11 @@ public class MortgagePage extends BasePage {
     @FindBy(xpath = "//input[@data-test-id='canConfirmIncome']//ancestor::div[@class='dcCalc_switch-tablet__switch']")
     WebElement canConfirmSwitch;
 
-    @FindBy(xpath = "//input[@data-test-id='youngFamilyDiscount']//ancestor::div[@class='dcCalc_switch-tablet__switch']")
+    @FindBy(xpath = "//input[@data-test-id = 'youngFamilyDiscount']/ancestor::label/span[@class = 'dcCalc_switch__control']")
     WebElement youngFamilySwitch;
+
+//    @FindBy(xpath = "//input[@data-test-id='youngFamilyDiscount']//ancestor::div[@class='dcCalc_switch-tablet__switch']")
+//    WebElement youngFamilySwitch;
 
     @FindBy(xpath = "//span[@data-test-id='amountOfCredit']")
     WebElement amountOfCredit;
