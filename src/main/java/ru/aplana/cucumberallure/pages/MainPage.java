@@ -20,7 +20,7 @@ public class MainPage extends BasePage {
 
 //    public void hoverMenuItem () {
 //        WebElement item = mortgageButton;
-//        fw.waitAndClick(item);
+//        fw.waitAndHover(item);
 //    }
 
     @Когда ("пользователь нажимает на подпункт меню Ипотека на готовое жильё")
