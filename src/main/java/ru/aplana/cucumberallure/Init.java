@@ -19,7 +19,7 @@ public class Init {
     public static void setUp() {
         System.setProperty("webdriver.chrome.driver", props.getProperty("chromedriver"));
         System.setProperty("webdriver.gecko.driver", props.getProperty("firefoxdriver"));
-        System.setProperty("webdriver.firefox.bin", "C:\\Program Files\\Mozilla Firefox\\firefox.exe");
+ //       System.setProperty("webdriver.firefox.bin", "C:\\Program Files\\Mozilla Firefox\\firefox.exe");
         String browser = System.getProperty("browser");
         if (browser.equals("chrome")) {
             driver = new ChromeDriver();
