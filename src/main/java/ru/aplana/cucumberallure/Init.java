@@ -1,7 +1,9 @@
 package ru.aplana.cucumberallure;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -16,17 +18,22 @@ public class Init {
 
     public static void setUp() {
         System.setProperty("webdriver.chrome.driver", props.getProperty("chromedriver"));
-//        System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
-        driver = new ChromeDriver();
+        System.setProperty("webdriver.gecko.driver", props.getProperty("firefoxdriver"));
+        System.setProperty("webdriver.firefox.bin", "C:\\Program Files\\Mozilla Firefox\\firefox.exe");
+        String browser = System.getProperty("browser");
+        if (browser.equals("chrome")) {
+            driver = new ChromeDriver();
+        } else if (browser.equals("firefox")) {
+            driver = new FirefoxDriver();
+        } else {
+            Assert.fail("Wrong browser");
+        }
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, 10, 500);
-        verifyWait = new WebDriverWait(driver, 3, 500);
+        wait = new WebDriverWait(driver, Integer.parseInt(props.getProperty("timeout.explicit.regular")), Integer.parseInt(props.getProperty("timeout.explicit.step")));
+        verifyWait = new WebDriverWait(driver, Integer.parseInt(props.getProperty("timeout.explicit.short")), Integer.parseInt(props.getProperty("timeout.explicit.step")));
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(props.getProperty("timeout.global")), TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(Integer.parseInt(props.getProperty("timeout.pageLoad")), TimeUnit.SECONDS);
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         driver.get(props.getProperty("url"));
-//        driver.get("https://www.sberbank.ru/person");
         fw = new Framework(driver, wait, verifyWait);
     }
 

@@ -63,14 +63,17 @@
                     <testFailureIgnore>true</testFailureIgnore>
                     <argLine>
                         -Dfile.encoding=UTF-8 -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
-                        -Dcucumber.options="--tags @all"
+                        -Dcucumber.options="--tags ${TAGS}"
                     </argLine>
                     <systemProperties>
                         <property>
                             <name>allure.results.directory</name>
                             <value>${project.build.directory}/allure-results</value>
                         </property>
-
+                        <property>
+                            <name>browser</name>
+                            <value>chrome</value>
+                        </property>
                     </systemProperties>
                 </configuration>
                 <dependencies>
